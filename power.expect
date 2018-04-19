@@ -1,0 +1,24 @@
+#!/usr/bin/expect
+
+set timeout 20
+set name [lindex $argv 0]
+set user [lindex $argv 1]
+set password [lindex $argv 2]
+set outlet [lindex $argv 3]
+set state [lindex $argv 4]
+spawn telnet $name 
+# login
+expect "Enter username>" 
+send "$user\r"
+expect "Enter password>"
+send "$password\r"
+# Wait for menu
+expect "Outlet Control"
+# choose outlet control
+send "1\r"
+expect "Circuit Breaker"
+# set the state of the outlet
+send "$state $outlet\r"
+expect "Outlet"
+send "y\r"
+expect "Circuit Breaker"
