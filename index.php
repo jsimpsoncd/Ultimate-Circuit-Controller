@@ -26,26 +26,32 @@ $outletstats = preg_split("/((\r?\n)|(\r\n?))/", $output);
     <th>Status</th>
     <th>Control</th>
   </tr>
+  <?php  $pt = 1;?>
   <tr>
-    <td>Downstairs Exhaust Fan</td>
-    <td><?php echo explode(" ",$outletstats[0])[1];?></td>
-    <?php if (explode(" ",$outletstats[0])[1] == "On") {
-    echo "<td><a href='".$url."?state=on&port=1'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=1'><img src='./img/button_off_nact.png'></a></td>";
-    } elseif (explode(" ",$outletstats[0])[1] == "Off") {
-    echo "<td><a href='".$url."?state=on&port=1'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=1'><img src='./img/button_off_act.png'></a></td>";}?>
+    <td>Basement Exhaust Fan</td>
+    <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
+    <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
+    } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
   </tr>
+  <?php  $pt = 2;?>
   <tr>
     <td>Deck Floodlights</td>
-    <td><?php echo explode(" ",$outletstats[1])[1];?></td>
-    <?php if (explode(" ",$outletstats[1])[1] == "On") {
-    echo "<td><a href='".$url."?state=on&port=2'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=2'><img src='./img/button_off_nact.png'></a></td>";
-    } elseif (explode(" ",$outletstats[1])[1] == "Off") {
-    echo "<td><a href='".$url."?state=on&port=2'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=2'><img src='./img/button_off_act.png'></a></td>";}?>
+    <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
+    <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
+    } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
   </tr>
+  <?php  $pt = 3;?>
   <tr>
     <td>Basement Lights</td>
-    <td><?php echo explode(" ",$outletstats[2])[1];?></td>
-    <td><?php echo "<a href='".$url."?state=on&port=3'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=3'><img src='./img/button_off_nact.png'></a>";?></td>
+    <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
+    <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
+    } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
   </tr>
 </table>
 </body>
