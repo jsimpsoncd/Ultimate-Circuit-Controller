@@ -35,19 +35,19 @@ $outletstats = preg_split("/((\r?\n)|(\r\n?))/", $output);
     <td>Downstairs Exhaust Fan</td>
     <td>1</td>
     <td><?php echo explode(" ",$outletstats[0])[1];?></td>
-    <td><?php echo "<a href='".$url."?state=on&port=1'>Turn On</a></br><a href='".$url."?state=off&port=1'>Turn Off</a>";?></td>
+    <td><?php echo "<a href='".$url."?state=on&port=1'><img src='./img/button_on_nact.png'></a></br><a href='".$url."?state=off&port=1'><img src='./img/button_off_nact.png'></a>";?></td>
   </tr>
   <tr>
     <td>Deck Floodlight</td>
     <td>2</td> 
     <td><?php echo explode(" ",$outletstats[1])[1];?></td>
-    <td><?php echo "<a href='".$url."?state=on&port=2'><img src='./img/button_on_nact.png'></a></br><a href='".$url."?state=off&port=2'><img src='./img/button_off_nact.png'></a>";?></td>
+    <td><?php echo "<a href='".$url."?state=on&port=2'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=2'><img src='./img/button_off_nact.png'></a>";?></td>
   </tr>
   <tr>
     <td>Basement Lights</td>
     <td>3</td>
     <td><?php echo explode(" ",$outletstats[2])[1];?></td>
-    <td><?php echo "<a href='".$url."?state=on&port=3'>Turn On</a></br><a href='".$url."?state=off&port=3'>Turn Off</a>";?></td>
+    <td><?php echo "<a href='".$url."?state=on&port=3'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=3'><img src='./img/button_off_nact.png'></a>";?></td>
   </tr>
 </table>
 </body>
