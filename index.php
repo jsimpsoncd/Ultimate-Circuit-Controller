@@ -7,9 +7,6 @@
 <body>
 <?php 
 include("config.php");
-$user = "admin";
-$password = "admin";
-$ip = "192.168.5.3";
 if (array_key_exists("port", $_GET) and is_numeric($_GET["port"] )) {
 	$port = $_GET["port"];
 }
