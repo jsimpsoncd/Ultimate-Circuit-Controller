@@ -24,7 +24,7 @@ $outletstats = preg_split("/((\r?\n)|(\r\n?))/", $output);
     <th>Status</th>
     <th>Control</th>
   </tr>
-  <?php $handle = fopen("inputfile.txt", "r");
+  <?php $handle = fopen("ports", "r");
   if ($handle) {
       while (($line = fgets($handle)) !== false) {
           $elems=explode(",", $line);
