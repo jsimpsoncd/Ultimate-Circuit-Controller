@@ -6,6 +6,7 @@
 </head>
 <body>
 <?php 
+# Don't forget the config file. Example included.
 include("config.php");
 if (array_key_exists("port", $_GET) and is_numeric($_GET["port"] )) {
 	$port = $_GET["port"];
@@ -23,33 +24,26 @@ $outletstats = preg_split("/((\r?\n)|(\r\n?))/", $output);
     <th>Status</th>
     <th>Control</th>
   </tr>
-  <?php  $pt = 1;?>
-  <tr>
-    <td>Basement Exhaust Fan</td>
+  <?php $handle = fopen("inputfile.txt", "r");
+  if ($handle) {
+      while (($line = fgets($handle)) !== false) {
+          $elems=explode(",", $line);
+          $pt = $elems[0];
+?>  <tr>
+    <td><?php echo $elems[1];?></td>
     <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
     <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
     echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
     } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
     echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
   </tr>
-  <?php  $pt = 2;?>
-  <tr>
-    <td>Deck Floodlights</td>
-    <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
-    <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
-    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
-    } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
-    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
-  </tr>
-  <?php  $pt = 3;?>
-  <tr>
-    <td>Basement Lights</td>
-    <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
-    <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
-    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
-    } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
-    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
-  </tr>
+<?php
+      }
+  
+      fclose($handle);
+  } else {
+      // error opening the file.
+  } ?>
 </table>
 </body>
 </html>
