@@ -34,6 +34,26 @@ $outletstats = preg_split("/((\r?\n)|(\r\n?))/", $output);
     echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
   </tr>
   <?php  $pt = 2;?>
+  <?php $handle = fopen("inputfile.txt", "r");
+  if ($handle) {
+      while (($line = fgets($handle)) !== false) {
+          $elems=explode(",", $line);
+          $pt = $elems[0];
+?>  <tr>
+    <td><?php echo $elems[1];?></td>
+    <td><?php echo explode(" ",$outletstats[$pt-1])[1];?></td>
+    <?php if (explode(" ",$outletstats[$pt-1])[1] == "On") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_act.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_nact.png'></a></td>";
+    } elseif (explode(" ",$outletstats[$pt-1])[1] == "Off") {
+    echo "<td><a href='".$url."?state=on&port=".$pt."'><img src='./img/button_on_nact.png'></a><a href='".$url."?state=off&port=".$pt."'><img src='./img/button_off_act.png'></a></td>";}?>
+  </tr>
+<?php
+      }
+  
+      fclose($handle);
+  } else {
+      // error opening the file.
+  } ?>
 </table>
 </body>
 </html>
