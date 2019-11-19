@@ -1,7 +1,7 @@
 # poweron
 Baytech RPC-3 power control via php and expect
 
-The expect script can be used on it's own to control baytech RPC-3 PDUs. 
+The expect script can be used on its own to control baytech RPC-3 PDUs. 
 These are readily available on ebay and have 8 independantly switchable outlets. They are regularly under $50.
 
 Run it like so.
